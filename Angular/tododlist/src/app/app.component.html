@@ -1,0 +1,81 @@
+<div class="body">
+<div class="container">
+        
+  <header>
+      <h1>Organize your
+          to-do lists from anywhere!</h1>
+<form #myform="ngForm">
+    <div class="input-section">
+      <input id="taskId" type="text" placeholder= "Enter your Task Id!"
+      class="input w-full max-w-xs" name="taskId" #taskId="ngModel" ngModel pattern = [0-9]+ required style="width: 93%;"/>
+
+      <div *ngIf="taskId.touched && taskId.invalid">
+        <div *ngIf="taskId.errors?.['required']">
+    
+         <b style="color: red;">Task ID required.</b>
+        
+        </div>
+      </div> 
+
+   
+        <input id="taskhtm" type="text" placeholder= "📑 Add your to-do here!"
+            class="input w-full max-w-xs" name="taskhtm" #taskhtm="ngModel" ngModel required pattern="[a-zA-Z0-9]+"/>
+            <div *ngIf="taskhtm.touched">
+                <div *ngIf="taskhtm.errors?.['required']">
+              <br>
+                 <b style="color: red;">Task required.</b>
+                
+                </div>
+                
+              </div>  
+              
+        <button id="add-button" class="btn btn-add " type="button" (click)="insertTask(myform.value)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+          </svg>
+        </button>
+    </div>
+</form>
+      
+  </header>
+
+  <div class="todos-filter">
+
+      <button id="delete-selected" class="btn btn-ghost delete-selected-btn"  (click)="updateTask(myform.value)">
+         Update Task
+      </button>
+      <button id="delete-all" class="btn btn-ghost delete-all-btn"  (click)="deleteTask(myform.value)">
+          Delete 
+      </button>
+      <button id="delete-all" class="btn btn-ghost delete-all-btn"  (click)="findtask(myform.value)">
+        Find
+    </button>
+    <button id="delete-all" class="btn btn-ghost delete-all-btn"  (click)="findAlltask()">
+        Find All
+    </button>
+  </div>
+  <ul id="all-todos" class="todos-list">
+
+  </ul>
+  <!-- <div class="filters">
+      <div class="dropdown">
+          <button class="dropbtn">Filter</button>
+          <div class="dropdown-content">
+              <a href="#" id="all">All</a>
+              <a href="#" id="rem">Pending</a>
+              <a href="#" id="com">Completed</a>
+          </div>
+      </div>
+  </div> -->
+</div>
+</div>
+<h5 style="text-align: center;">{{result}}</h5>
+<br>
+<div style="width: 100%;" *ngIf="flag">
+    <table width="60%" align="center" border="1" >
+     <tr style="font-size: 20px;"><th >Task ID</th><th>Task Name</th></tr> 
+      <tr *ngFor="let task of taskArr" style="font-size: 20px;">
+          <td> {{task.id}} </td><td> {{task.todo}} </td>
+      </tr>
+   </table>
+   </div>

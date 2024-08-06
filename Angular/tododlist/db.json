@@ -1,0 +1,20 @@
+{
+  "todotask": [
+    {
+      "id": "01",
+      "todo": "Do skincare today"
+    },
+    {
+      "id": "02",
+      "todo": "Hairwash"
+    },
+    {
+      "id": "03",
+      "todo": "Go to Gym"
+    },
+    {
+      "id": "04",
+      "todo": "Do assignment this evening"
+    }
+  ]
+}
